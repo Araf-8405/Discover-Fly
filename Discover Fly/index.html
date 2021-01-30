@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="input1" type="text" class="form-control text-center" value="1">
+                </div>
+                <div >
+                    <button id="plus1" class="btn btn-default plus-minus-btn"><i class="fas fa-plus"></i></button>
+                    <button id="minus1" class="btn btn-default plus-minus-btn"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="input2" type="text" class="form-control text-center" value="1">
+                </div>
+                <div>
+                    <button id="plus2" class="btn btn-default plus-minus-btn"><i class="fas fa-plus"></i></button>
+                    <button id="minus2" class="btn btn-default plus-minus-btn"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="subtotal">250</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="Tax">25</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="total">550</span></p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+    </section>
+
+    <script>
+        const plusbtn1 =document.getElementById("plus1");
+      plusbtn1.addEventListener("click", function(){
+        
+        var Value = add ("input1");
+     
+         
+        Total();
+      
+      })
+
+      const minusbtn1 =document.getElementById("minus1");
+      minusbtn1.addEventListener("click", function(){
+
+       var Value = sub ("input1");
+
+      
+       Total();
+           
+       
+
+      })
+
+      const plusbtn2 =document.getElementById("plus2");
+      plusbtn2.addEventListener("click", function(){
+
+        var Value = add ("input2");
+          
+        Total();
+      
+      
+      })
+
+      const minusbtn2 =document.getElementById("minus2");
+      minusbtn2.addEventListener("click", function(){
+
+        var Value = sub ("input2");
+        
+        Total();
+          
+      })
+      
+
+      function add(num){
+         const input= document.getElementById(num).value;
+         var inputvalue = parseInt(input);
+         if (inputvalue>=0) {
+            inputvalue++;
+         document.getElementById(num).value=inputvalue;
+         return inputvalue;
+         }
+
+        }
+      function sub(num){
+         const input= document.getElementById(num).value;
+         var inputvalue = parseInt(input);
+         if (inputvalue>0) {
+         inputvalue--;
+         document.getElementById(num).value=inputvalue;
+         return inputvalue;
+         }
+        }
+
+
+    function Total() {
+        var fstInput = document.getElementById("input1").value;
+        var fInput= parseInt(fstInput);
+        var secInput = document.getElementById("input2").value;
+        var sInput= parseInt(secInput);
+        var subtotal = (fInput*150)+ (sInput*100);
+        document.getElementById("subtotal").innerText=subtotal;
+        var taxOn = document.getElementById("Tax").innerText;
+        var converttax= parseInt(taxOn);
+        var totalTax = subtotal * .1;
+        document.getElementById("Tax").innerText = totalTax;
+        var tatal = document.getElementById("total").innerText;
+        var converttotal= parseInt(total);
+        var totalAmount = subtotal + totalTax;
+        document.getElementById("total").innerText = totalAmount;
+    }
+
+        </script>
+    </body>
+
+</html>
